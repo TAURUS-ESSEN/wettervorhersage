@@ -17,7 +17,25 @@ const iconMap = {
     'sleet': '🌨',
     'wind': '💨',
     'fog': '🌫'
-  };
+};
+
+const whetherMap = {
+    'Clear': 'clear-icon.png',
+    'Partially cloudy': 'cloudy-icon.png',
+    'Overcast': 'overcast-icon.png',
+    'Rain': 'rain-icon.png',
+    'Snow': 'snow-icon.png',
+    'fog': '🌫'
+};
+
+const whetherBackgroundMap = {
+    'Clear': 'clear-bg.jpg',
+    'Partially cloudy': 'cloudy-bg.jpg',
+    'Overcast': 'overcast-bg.jpg',
+    'Rain': 'rain-bg.jpg',
+    'Snow': 'snow-bg.jpg',
+    'fog': '🌫'
+};
 
 button.addEventListener("click", () => {
     showError.style.display = "none";
@@ -25,8 +43,25 @@ button.addEventListener("click", () => {
 })
 
 export function showWetherData(data) {
-    console.log("ss");
+    let weatherIcon = data.days[0].conditions;
+
+
+    console.log("weatherIcon = " +weatherIcon); 
+    const index = weatherIcon.indexOf(',');
+    console.log(index);
+    if (index !== -1 ) {
+        console.log("hi!")
+    weatherIcon = weatherIcon.slice(0,index);
+    }  
+    const weatherBg = whetherBackgroundMap[weatherIcon] || '❓';
+    
+    console.log("weatherBg= " +weatherBg);
+    document.body.style.backgroundImage = `url('./img/${weatherBg}')`;
+    console.log("weatherIcon = " +weatherIcon);
+    const weatherSymbol = whetherMap[weatherIcon] || '❓';
+    console.log("weatherSymbol =" +weatherSymbol);
     document.getElementById("location").textContent = data.resolvedAddress;
+    document.getElementById("weather-icon").src = `./img/${weatherSymbol}`;
     document.getElementById("temp").textContent = Math.round(data.days[0].temp);
     document.getElementById("temp-min").textContent = Math.round(data.days[0].tempmin);
     document.getElementById("temp-max").textContent = Math.round(data.days[0].tempmax);
@@ -52,5 +87,5 @@ export function showWetherData(data) {
 export function notFound(value) {
     showError.style.display = "block";
     showError.textContent = `You location ${value} not found. Enjoi wether in Essen :D`
-    loadWetherData();
+    // loadWetherData();
 }

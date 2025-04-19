@@ -16,14 +16,16 @@
         </div>
         <div class="error" id="error-block"> </div>
         <div class="wether-today" id="today">
-            <div>
+            <div class="location">
                 Location : <span id="location"> Essen </span>
             </div>
             <div  class="today-temp" id="today-temp">
-                <img src="./img/partly-cloudy-day.png" alt=""> <h1><span id="temp">+11</span>&deg;C</h1>
+                <!-- <span id="imgtest"></span> -->
+                <img src="./img/partly-cloudy-day.png" id="weather-icon" width="100" height="100" alt="">
+                <h1><span id="temp"> +11 </span>&deg;C</h1>
             </div>
-            <div>
-               <p> <span id="temp-min">  8</span>&deg; /  <span id="temp-max"> 15</span>&deg;</p>
+            <div class="maxmin">
+                <p> min <span id="temp-min">  8</span>&deg; /  max <span id="temp-max"> 15</span>&deg;</p>
             </div>
         </div>  
 
@@ -31,7 +33,6 @@
                 <summary>
                     next 5 days
                 </summary>
-     
 
         <div class="wether-5days"> 
                 <!-- <div class="wether-5days-left">

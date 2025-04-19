@@ -8,10 +8,30 @@
 
 html {
     font-family: 'Sour Gummy', 'Courier New', Courier, monospace;
+    font-size: 1em;
+}
+
+body {
+    background-image: url('./img/clear-bg.jpg');
+    background-repeat: no-repeat;
+    /* background-position: center; */
+    background-size: cover;
 }
 
 h1 {
-    font-size: 3em;
+    font-size: 4em;
+    color: rgb(128, 6, 6);
+    padding-left: 0.5em;
+}
+
+.location {
+    font-size: 1.2em;
+    text-align: center;
+}
+
+.maxmin {
+    padding-top: 1em;
+    font-size: 1.3em;
 }
 
 input, button {
@@ -22,28 +42,31 @@ input, button {
     font-size: 1em;
 }
 input {
-    /* width: 80%; */
+    width: 250px;
 }
 
 button {
     border: 1px solid darkgrey;
+    background-color: azure;
     transition: 0.5s;
+    cursor: pointer;
 }
 
 button:hover {
     border: 1px solid darkgrey;
-    background-color: azure;
+    background-color: rgb(212, 246, 246);
 }
 
 .wrapper {
-    margin: 5% auto;
+    margin: 3% auto;
+    /* height: 100vh; */
     display: flex;
     flex-direction: column;
     gap: 1em;
     align-items: center;
     max-width: 500px;
     padding: 2em;
-    background-color: rgba(226, 230, 230, 0.382);
+    background-color: rgba(226, 230, 230, 0.782);
     border-radius: 10px;
 }
 
@@ -54,7 +77,9 @@ button:hover {
     gap: 1em;
     align-items: center;
     padding: 0.5em;
-    background-color: aliceblue;
+    /* background-color: aliceblue; */
+    /* background-color: rgb(248, 252, 239); */
+    background-color: rgba(240, 255, 255, 0.778);
     border-radius: 10px;
 }
 
@@ -66,7 +91,9 @@ button:hover {
 
 details  {
     width: 100%;
-    background-color: beige;
+    /* background-color: beige; */
+    background-color: azure;
+    /* background-color: beige; */
     padding: 0.5em;
     border-radius: 5px;
 }
@@ -74,6 +101,7 @@ details  {
 .wether-5days {
     width: 100%;
     background-color: azure;
+    /* background-color: beige; */
     border-radius: 5px;
     display: flex;
     flex-direction: column;
@@ -96,7 +124,7 @@ details  {
 }
 
 .ico {
-    /* color: yellow; */
+    width: 5%;
 }
 
 .error {

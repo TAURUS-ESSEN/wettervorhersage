@@ -6,7 +6,8 @@ let city = "Essen";
 export let data = ''
 export let grad = 'metric' //unitGroup=us
 export async function loadWetherData(city = "Essen" , grad = "metric") {
-    let url = `https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${city}?unitGroup=${grad}&key=4EWEFLFY2S48BTA5NH8HK4VMF&contentType=json`;
+//    let url = `https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${city}?unitGroup=${grad}&key=4EWEFLFY2S48BTA5NH8HK4VMF&contentType=json`;
+    let url = `https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${city}?unitGroup=${grad}&key=PZVEXDS56S5URH33UA4N6EDZP&contentType=json`;
 
     try {
         const response = await fetch(url);
