@@ -59,6 +59,8 @@ button:hover {
 
 .wrapper {
     margin: 3% auto;
+    position: relative;
+
     /* height: 100vh; */
     display: flex;
     flex-direction: column;
@@ -125,6 +127,16 @@ details  {
 
 .ico {
     width: 5%;
+}
+
+.grad {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-weight: 600;
 }
 
 .error {

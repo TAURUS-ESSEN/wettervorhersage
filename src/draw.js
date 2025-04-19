@@ -1,8 +1,9 @@
 'use strict';
-import { loadWetherData } from "./index.js"
+import {grad, loadWetherData} from "./index.js"
 
 const container = document.querySelector(".wether-5days");
-const button = document.querySelector("button");
+const btnSearch = document.getElementById("search");
+const btnGradToggler = document.getElementById("gradToggler");
 const input = document.querySelector("input");
 const showError = document.getElementById("error-block");
 
@@ -37,14 +38,21 @@ const whetherBackgroundMap = {
     'fog': '🌫'
 };
 
-button.addEventListener("click", () => {
+btnSearch.addEventListener("click", () => {
     showError.style.display = "none";
     loadWetherData(input.value);
 })
 
+btnGradToggler.addEventListener("click", () => {
+    console.log("grad="+grad)
+    btnGradToggler.textContent = (btnGradToggler.textContent === '°F') ? '°C' : '°F';
+    let grad1 = (grad === 'metric') ? 'us' : 'metric';
+    console.log("grad1="+grad1)
+    // loadWetherData(input.value, grad);
+})
+
 export function showWetherData(data) {
     let weatherIcon = data.days[0].conditions;
-
 
     console.log("weatherIcon = " +weatherIcon); 
     const index = weatherIcon.indexOf(',');
