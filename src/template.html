@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Odin Projekt - Wether App</title>
+    <link rel="stylesheet" href="style.css">
+    <script type="module" src="index.js" defer></script>
+</head>
+<body>
+    <div class="wrapper">
+        
+        <div class="form">
+            <input type="text" placeholder="Enter your location" maxlength="15" required> 
+            <button>Search</button>
+        </div>
+
+        <div class="wether-today" id="today">
+            <div>
+                Location : <span id="location"> Essen </span>
+            </div>
+            <div  class="today-temp" id="today-temp">
+                <img src="./img/partly-cloudy-day.png" alt=""> <h1><span id="temp">+11</span>&deg;C</h1>
+            </div>
+            <div>
+               <p> <span id="temp-min">  8</span>&deg; /  <span id="temp-max"> 15</span>&deg;</p>
+            </div>
+        </div>  
+
+            <details>
+                <summary>
+                    next 5 days
+                </summary>
+     
+
+        <div class="wether-5days"> 
+                <div class="wether-5days-left">
+                    <div class="ico"><img src="" alt="">	&#x2600; </div>
+                    <div class="day">  Mo </div>
+                    <div class="wetter">Sonnig </div>
+                </div>
+                <div class="wether-5days-right">
+                    <div class="minmax"> 3&deg; / 22 &deg; </div>
+                </div>
+        </div>
+            </details>
+        </div>
+</body>
+</html>
