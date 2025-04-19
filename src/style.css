@@ -21,6 +21,9 @@ input, button {
     font-family: 'Sour Gummy', 'Courier New', Courier, monospace;
     font-size: 1em;
 }
+input {
+    /* width: 80%; */
+}
 
 button {
     border: 1px solid darkgrey;
@@ -62,19 +65,40 @@ button:hover {
 }
 
 details  {
-    width: 50%;
+    width: 100%;
     background-color: beige;
+    padding: 0.5em;
+    border-radius: 5px;
 }
 
 .wether-5days {
     width: 100%;
     background-color: azure;
+    border-radius: 5px;
     display: flex;
-    justify-content: space-between;
+    flex-direction: column;
+    justify-content: space-evenly;
     gap: 1em;
+    padding: 1em;
 }
 
 .wether-5days-left {
     display: flex;
+    justify-content: left;
     gap: 1em;
+    /* background-color: aqua; */
+    width: 80%;
+}
+
+.test {
+    display: flex;
+    border-bottom: 1px solid gray;
+}
+
+.ico {
+    /* color: yellow; */
+}
+
+.error {
+    display: none;
 }

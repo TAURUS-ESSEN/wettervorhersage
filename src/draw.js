@@ -1,28 +1,56 @@
 'use strict';
-// import {loadWetherData, url} from "./index.js"
+import { loadWetherData } from "./index.js"
 
-const container = document.querySelector("wrapper");
-const button = document.querySelector("button")
+const container = document.querySelector(".wether-5days");
+const button = document.querySelector("button");
+const input = document.querySelector("input");
+const showError = document.getElementById("error-block");
 
-// button.addEventListener("click", loadWetherData(button.value))
+const iconMap = {
+    'clear-day': '☀',
+    'clear-night': '🌙',
+    'partly-cloudy-day': '⛅',
+    'partly-cloudy-night': '🌥',
+    'cloudy': '☁',
+    'rain': '🌧',
+    'snow': '❄',
+    'sleet': '🌨',
+    'wind': '💨',
+    'fog': '🌫'
+  };
+
+button.addEventListener("click", () => {
+    showError.style.display = "none";
+    loadWetherData(input.value);
+})
 
 export function showWetherData(data) {
+    console.log("ss");
     document.getElementById("location").textContent = data.resolvedAddress;
     document.getElementById("temp").textContent = Math.round(data.days[0].temp);
     document.getElementById("temp-min").textContent = Math.round(data.days[0].tempmin);
     document.getElementById("temp-max").textContent = Math.round(data.days[0].tempmax);
-    
-    // console.log(data.address);
-    // console.log(data.resolvedAddress);
-    // console.log(data.days[0].temp);
-    // console.log(data.days[0].conditions);
-    // console.log(data.days[0].tempmax);
-    // console.log(data.days[0].tempmin);
-    // console.log(data.days[0].feelslike);
-    // console.log(data.days[0].humidity);
-    // console.log(data.days[0].windspeed);
-    // console.log(data.days[0].pressure);
-    for (let i=0; i<=5; i++) {
-        console.log(data.days[i].datetime, data.days[i].tempmin, data.days[i].tempmax);
+    container.innerHTML = '';
+    for (let i=1; i<6; i++) {
+        let day = data.days[i].datetime.slice(-2) + '.' + data.days[i].datetime.slice(5,7)
+        const icon = data.days[i].icon;
+        const iconSymbol = iconMap[icon] || '❓';
+        container.innerHTML += `
+                <div class="test">
+                    <div class="wether-5days-left"> 
+                        <div class="ico">${iconSymbol}</div>
+                        <div class="day">  ${day} </div>
+                        <div class="wetter">${data.days[i].conditions}</div>
+                    </div>
+                    <div class="wether-5days-right">
+                        <div class="minmax"> <span>${Math.round(data.days[i].tempmin)}</span>&deg; / <span>${Math.round(data.days[i].tempmax)}</span>&deg; </div>
+                    </div>
+                </div>`
     }
+}
+
+export function notFound(value) {
+    showError.style.display = "block";
+    showError.textContent = `You location ${value} not found. Enjoi wether in Essen :D`
+    loadWetherData();
 }
