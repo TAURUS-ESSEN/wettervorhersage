@@ -298,10 +298,18 @@ details  {
              height: 100vh;
     }
 
+    input, button {
+        font-size: 1.3em;
+    }
+
     h1 {
         font-size: 3em
     }
-
+    
+    .wrapper {
+        max-width: 400px;
+        padding: 1em;
+    }
     .form {
         /* padding: 1em; */
         /* background-color: aqua; */
@@ -318,13 +326,17 @@ details  {
 
   }
 
-  @media (width <= 420px) {
+  @media (width <= 425px) {
+    input {
+        width: 100%;
+    }
+
     #search {
         margin: 0.5em 0.5em;
     }
 
     .grad {
-        width: 40px;
+        width: 80px;
         height: auto;
         border-radius: 15px;
         position: static;
@@ -332,4 +344,9 @@ details  {
         right: 0px;
         font-weight: 600; 
     }
+
+    .sk-circle {
+        top:5em;
+    }
+
   }
