@@ -6,6 +6,8 @@ const btnSearch = document.getElementById("search");
 const btnGradToggler = document.getElementById("gradToggler");
 const input = document.querySelector("input");
 const showError = document.getElementById("error-block");
+const circles = document.querySelector(".sk-circle");
+const weatherBlock = document.querySelector(".wether-today");
 
 const iconMap = {
     'clear-day': '☀',
@@ -88,4 +90,14 @@ export function notFound(value) {
     showError.style.display = "block";
     showError.textContent = `You location ${value} not found. Enjoi wether in Essen :D`
     // loadWetherData();
+}
+
+export function showCircle() {
+    circles.classList.remove("wether-hidden");
+    weatherBlock.classList.add("wether-hidden")
+}
+
+export function hideCircle() { 
+    circles.classList.add("wether-hidden");
+    weatherBlock.classList.remove("wether-hidden")
 }
