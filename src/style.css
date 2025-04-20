@@ -292,13 +292,19 @@ details  {
 
  @media (width <= 520px)
   {
+
+    body {
+             background-position: center; 
+             height: 100vh;
+    }
+
     h1 {
         font-size: 3em
     }
 
     .form {
         /* padding: 1em; */
-        background-color: aqua;
+        /* background-color: aqua; */
         flex-wrap: wrap;
         align-items: center;
         justify-content: center;

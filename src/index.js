@@ -11,7 +11,7 @@ export async function loadWetherData(city = "Essen" , grad = "metric") {
     console.log("loadWetherData city = "+city);
     console.log("loadWetherData grad = "+grad);
 //    let url = `https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${city}?unitGroup=${grad}&key=4EWEFLFY2S48BTA5NH8HK4VMF&contentType=json`; ЭТО ПЕРВЫЙ КЛЮЧА
-    let url = `h2ttps://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${city}?unitGroup=${grad}&key=PZVEXDS56S5URH33UA4N6EDZP&contentType=json`; // ЗАПАСНОЙ КЛЮЧ
+    let url = `https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${city}?unitGroup=${grad}&key=PZVEXDS56S5URH33UA4N6EDZP&contentType=json`; // ЗАПАСНОЙ КЛЮЧ
 
     try {
         const response = await fetch(url);
