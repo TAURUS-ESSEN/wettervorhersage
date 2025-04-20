@@ -17,7 +17,7 @@
 }
 
 html {
-    font-family: 'Sour Gummy', 'Courier New', Courier, monospace;
+    font-family: 'Sour Gummy', 'Georgia', Courier, monospace;
     font-size: 1em;
 }
 
@@ -76,6 +76,7 @@ button:hover {
     padding: 2em;
     background-color: var(--wrapper-bgcolor);
     border-radius: 10px;
+    box-shadow: 0 0 5px black;
 }
 
 .wether-today {

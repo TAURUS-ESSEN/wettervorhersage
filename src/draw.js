@@ -20,7 +20,7 @@ const iconMap = {
     'sleet': '🌨',
 };
 
-const whetherMap = {
+const weatherMap = {
     'Clear': 'clear-icon.png',
     'Partially cloudy': 'cloudy-icon.png',
     'Overcast': 'overcast-icon.png',
@@ -28,7 +28,7 @@ const whetherMap = {
     'Snow': 'snow-icon.png'
 };
 
-const whetherBackgroundMap = {
+const weatherBackgroundMap = {
     'Clear': 'clear-bg.jpg',
     'Partially cloudy': 'cloudy-bg.jpg',
     'Overcast': 'overcast-bg.jpg',
@@ -37,10 +37,16 @@ const whetherBackgroundMap = {
 };
 
 btnSearch.addEventListener("click", () => {
-    if (input.value !== '') {
+    if (input.value.trim() !== '') {
         showError.style.display = "none";
         loadWetherData(input.value, config.grad);
     }
+})
+
+input.addEventListener('keydown', event => {
+    if ((event.key === 'Enter') && (input.value.trim() !== '')) { 
+        loadWetherData(input.value, config.grad);
+    } 
 })
 
 btnGradToggler.addEventListener("click", () => {
@@ -57,10 +63,10 @@ export function showWetherData(data) {
     if (index !== -1 ) {
     weatherIcon = weatherIcon.slice(0,index);
     }  
-    const weatherBg = whetherBackgroundMap[weatherIcon] || 'clear-bg.jpg';
+    const weatherBg = weatherBackgroundMap[weatherIcon] || 'clear-bg.jpg';
     
     document.body.style.backgroundImage = `url('./img/${weatherBg}')`;
-    const weatherSymbol = whetherMap[weatherIcon] || 'clear-icon.png';
+    const weatherSymbol = weatherMap[weatherIcon] || 'clear-icon.png';
     document.getElementById("location").textContent = data.resolvedAddress;
     document.getElementById("weather-icon").src = `./img/${weatherSymbol}`;
     document.getElementById("temp").textContent = Math.round(data.days[0].temp);
