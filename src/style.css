@@ -8,6 +8,7 @@
     --wrapper-bgcolor: #e2e6e6c7;
     --weather-today-bg: #f1f9f9cf;
     --details-bgcolor: #f0ffff;    
+    --effekt-color: #5b5b5b;
 }
 
 * {
@@ -110,6 +111,7 @@ details  {
     padding: 0.5em;
     border-radius: 5px;
     cursor: pointer;
+    border: var(--border-color);
 }
 
 .weather-5days {
@@ -159,7 +161,7 @@ details  {
     transition: 0.5s;
 }
 
-/* EFFEKT */
+/* EFFEKT  https://tobiasahlin.com/spinkit/ */
 .sk-circle {
     margin: 100px auto;
     width: 60px;
@@ -181,7 +183,7 @@ details  {
     margin: 0 auto;
     width: 15%;
     height: 15%;
-    background-color: #333;
+    background-color: var(--effekt-color);
     border-radius: 100%;
     -webkit-animation: sk-circleBounceDelay 1.2s infinite ease-in-out both;
             animation: sk-circleBounceDelay 1.2s infinite ease-in-out both;
@@ -270,8 +272,8 @@ details  {
     -webkit-transform: scale(0);
             transform: scale(0);
     } 40% {
-      -webkit-transform: scale(1);
-              transform: scale(1);
+    -webkit-transform: scale(1);
+            transform: scale(1);
     }
 }
 
