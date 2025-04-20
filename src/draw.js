@@ -1,5 +1,5 @@
 'use strict';
-import {grad, loadWetherData} from "./index.js"
+import {config, data, loadWetherData} from "./index.js"
 
 const container = document.querySelector(".wether-5days");
 const btnSearch = document.getElementById("search");
@@ -25,8 +25,7 @@ const whetherMap = {
     'Partially cloudy': 'cloudy-icon.png',
     'Overcast': 'overcast-icon.png',
     'Rain': 'rain-icon.png',
-    'Snow': 'snow-icon.png',
-    'fog': '🌫'
+    'Snow': 'snow-icon.png'
 };
 
 const whetherBackgroundMap = {
@@ -34,40 +33,33 @@ const whetherBackgroundMap = {
     'Partially cloudy': 'cloudy-bg.jpg',
     'Overcast': 'overcast-bg.jpg',
     'Rain': 'rain-bg.jpg',
-    'Snow': 'snow-bg.jpg',
-    'fog': '🌫'
+    'Snow': 'snow-bg.jpg'
 };
 
 btnSearch.addEventListener("click", () => {
     showError.style.display = "none";
-    loadWetherData(input.value);
+    loadWetherData(input.value, config.grad  );
 })
 
 btnGradToggler.addEventListener("click", () => {
-    console.log("grad="+grad)
+    console.log("входной градус "+config.grad);
     btnGradToggler.textContent = (btnGradToggler.textContent === '°F') ? '°C' : '°F';
-    let grad1 = (grad === 'metric') ? 'us' : 'metric';
-    console.log("grad1="+grad1)
-    // loadWetherData(input.value, grad);
+     config.grad = (config.grad === 'metric') ? 'us' : 'metric';
+    console.log("переключаю градусы на " +config.grad );
+    loadWetherData(data.address, config.grad )
 })
 
 export function showWetherData(data) {
     let weatherIcon = data.days[0].conditions;
 
-    console.log("weatherIcon = " +weatherIcon); 
     const index = weatherIcon.indexOf(',');
-    console.log(index);
     if (index !== -1 ) {
-        console.log("hi!")
     weatherIcon = weatherIcon.slice(0,index);
     }  
     const weatherBg = whetherBackgroundMap[weatherIcon] || '❓';
     
-    console.log("weatherBg= " +weatherBg);
     document.body.style.backgroundImage = `url('./img/${weatherBg}')`;
-    console.log("weatherIcon = " +weatherIcon);
     const weatherSymbol = whetherMap[weatherIcon] || '❓';
-    console.log("weatherSymbol =" +weatherSymbol);
     document.getElementById("location").textContent = data.resolvedAddress;
     document.getElementById("weather-icon").src = `./img/${weatherSymbol}`;
     document.getElementById("temp").textContent = Math.round(data.days[0].temp);
