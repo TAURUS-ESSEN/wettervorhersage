@@ -1,13 +1,13 @@
 'use strict';
 import {config, data, loadWetherData} from "./index.js"
 
-const container = document.querySelector(".wether-5days");
 const btnSearch = document.getElementById("search");
 const btnGradToggler = document.getElementById("gradToggler");
 const input = document.querySelector("input");
 const showError = document.getElementById("error-block");
 const circles = document.querySelector(".sk-circle");
 const weatherBlock = document.querySelector(".wether-today");
+const container = document.querySelector(".wether-5days");
 
 const iconMap = {
     'clear-day': '☀',
@@ -18,8 +18,6 @@ const iconMap = {
     'rain': '🌧',
     'snow': '❄',
     'sleet': '🌨',
-    'wind': '💨',
-    'fog': '🌫'
 };
 
 const whetherMap = {
@@ -39,29 +37,30 @@ const whetherBackgroundMap = {
 };
 
 btnSearch.addEventListener("click", () => {
-    showError.style.display = "none";
-    loadWetherData(input.value, config.grad  );
+    if (input.value !== '') {
+        showError.style.display = "none";
+        loadWetherData(input.value, config.grad);
+    }
 })
 
 btnGradToggler.addEventListener("click", () => {
-    console.log("входной градус "+config.grad);
     btnGradToggler.textContent = (btnGradToggler.textContent === '°F') ? '°C' : '°F';
-     config.grad = (config.grad === 'metric') ? 'us' : 'metric';
-    console.log("переключаю градусы на " +config.grad );
+    config.grad = (config.grad === 'metric') ? 'us' : 'metric';
     loadWetherData(data.address, config.grad )
 })
 
 export function showWetherData(data) {
+    input.value = '';
     let weatherIcon = data.days[0].conditions;
 
     const index = weatherIcon.indexOf(',');
     if (index !== -1 ) {
     weatherIcon = weatherIcon.slice(0,index);
     }  
-    const weatherBg = whetherBackgroundMap[weatherIcon] || '❓';
+    const weatherBg = whetherBackgroundMap[weatherIcon] || 'clear-bg.jpg';
     
     document.body.style.backgroundImage = `url('./img/${weatherBg}')`;
-    const weatherSymbol = whetherMap[weatherIcon] || '❓';
+    const weatherSymbol = whetherMap[weatherIcon] || 'clear-icon.png';
     document.getElementById("location").textContent = data.resolvedAddress;
     document.getElementById("weather-icon").src = `./img/${weatherSymbol}`;
     document.getElementById("temp").textContent = Math.round(data.days[0].temp);
@@ -80,7 +79,8 @@ export function showWetherData(data) {
                         <div class="wetter">${data.days[i].conditions}</div>
                     </div>
                     <div class="wether-5days-right">
-                        <div class="minmax"> <span>${Math.round(data.days[i].tempmin)}</span>&deg; / <span>${Math.round(data.days[i].tempmax)}</span>&deg; </div>
+                        <div class="minmax"> <span>${Math.round(data.days[i].tempmax)}</span>&deg;/ 
+                        <span>${Math.round(data.days[i].tempmin)}</span>&deg;</div>
                     </div>
                 </div>`
     }
@@ -88,16 +88,15 @@ export function showWetherData(data) {
 
 export function notFound(value) {
     showError.style.display = "block";
-    showError.textContent = `You location ${value} not found. Enjoi wether in Essen :D`
-    // loadWetherData();
+    showError.textContent = `Your location ${value} not found.`
 }
 
 export function showCircle() {
     circles.classList.remove("wether-hidden");
-    weatherBlock.classList.add("wether-hidden")
+    weatherBlock.classList.add("wether-hidden");
 }
 
 export function hideCircle() { 
     circles.classList.add("wether-hidden");
-    weatherBlock.classList.remove("wether-hidden")
+    weatherBlock.classList.remove("wether-hidden");
 }
