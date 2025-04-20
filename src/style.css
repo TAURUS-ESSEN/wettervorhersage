@@ -6,7 +6,7 @@
     --button-bgcolor-hover: #b3f1f1;
     --border-color: 1px solid #a9a9a9;
     --wrapper-bgcolor: #e2e6e6c7;
-    --wether-today-bg: #f1f9f9cf;
+    --weather-today-bg: #f1f9f9cf;
     --details-bgcolor: #f0ffff;    
 }
 
@@ -17,7 +17,7 @@
 }
 
 html {
-    font-family: 'Sour Gummy', 'Georgia', Courier, monospace;
+    font-family: 'Sour Gummy', Courier, monospace;
     font-size: 1em;
 }
 
@@ -39,12 +39,13 @@ h1 {
 }
 
 .maxmin {
-    padding-top: 1em;
+    padding-top: 0.5em;
     font-size: 1.3em;
 }
 
 input, button {
     padding: 0.5em;
+    min-height: 40px;
     border: var(--border-color);
     border-radius: 5px;
     font-family: 'Sour Gummy', 'Courier New', Courier, monospace;
@@ -52,7 +53,7 @@ input, button {
 }
 
 input {
-    width: 250px;
+    width: 300px;
 }
 
 button {
@@ -79,14 +80,14 @@ button:hover {
     box-shadow: 0 0 5px black;
 }
 
-.wether-today {
+.weather-today {
     min-width: 400px;
     display: flex;
     flex-direction: column;
-    gap: 1em;
+    gap: 1.5em;
     align-items: center;
     padding: 0.5em;
-    background-color: var(--wether-today-bg);
+    background-color: var(--weather-today-bg);
     border-radius: 10px;
     visibility: visible;
     opacity: 1;
@@ -111,7 +112,7 @@ details  {
     cursor: pointer;
 }
 
-.wether-5days {
+.weather-5days {
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -122,14 +123,14 @@ details  {
     border-radius: 5px;
 }
 
-.wether-5days-left {
+.weather-5days-left {
     width: 80%;
     display: flex;
     justify-content: left;
     gap: 1em;
 }
 
-.test {
+.weather-5days-day {
     display: flex;
     border-bottom: var(--border-color)
 }
@@ -152,7 +153,7 @@ details  {
     display: none;
 }
 
-.wether-hidden {
+.weather-hidden {
     visibility: hidden; 
     opacity: 0;
     transition: 0.5s;
@@ -291,7 +292,7 @@ details  {
         height: 100vh;
     }
 
-    .wether-today {
+    .weather-today {
         min-width: 300px;
     }
 

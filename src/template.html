@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Odin Projekt - Wether App</title>
+    <title>Odin Projekt - weather App</title>
     <link rel="stylesheet" href="style.css">
     <script type="module" src="index.js"></script>
 </head>
@@ -12,10 +12,10 @@
         <div class="form">
             <input type="text" placeholder="Enter your location" maxlength="15" required> 
             <button id="search">Search</button>
-            <button class="grad" id="gradToggler">°F</button>
+            <button class="grad" id="gradToggler" aria-label="Toggle temperature unit">°F</button>
         </div>
         <div class="error" id="error-block"> </div>       
-        <div class="sk-circle wether-hidden"> 
+        <div class="sk-circle weather-hidden"> 
             <!-- effekt -->
                 <div class="sk-circle1 sk-child"></div>
                 <div class="sk-circle2 sk-child"></div>
@@ -30,12 +30,12 @@
                 <div class="sk-circle11 sk-child"></div>
                 <div class="sk-circle12 sk-child"></div>
         </div>
-        <div class="wether-today" id="today">
+        <section class="weather-today" id="today">
             <div class="location">
                 Location : <span id="location"> Essen </span>
             </div>
             <div  class="today-temp" id="today-temp">
-                <img src="./img/clear-icon.png" id="weather-icon" width="100" height="100" alt="">
+                <img src="./img/clear-icon.png" id="weather-icon" width="100" height="100" alt="current weather icon">
                 <h1><span id="temp"> +11 </span>&deg;C</h1>
             </div>
             <div class="maxmin">
@@ -45,10 +45,10 @@
                 <summary>
                     next 5 days
                 </summary>
-                <div class="wether-5days"> 
+                <div class="weather-5days"> 
                 </div>    
             </details>
-        </div>
+        </section>
     </main>
 </body>
 </html>

@@ -1,13 +1,13 @@
 'use strict';
-import {config, data, loadWetherData} from "./index.js"
+import {config, data, loadWeatherData} from "./index.js"
 
 const btnSearch = document.getElementById("search");
 const btnGradToggler = document.getElementById("gradToggler");
 const input = document.querySelector("input");
 const showError = document.getElementById("error-block");
 const circles = document.querySelector(".sk-circle");
-const weatherBlock = document.querySelector(".wether-today");
-const container = document.querySelector(".wether-5days");
+const weatherBlock = document.querySelector(".weather-today");
+const container = document.querySelector(".weather-5days");
 
 const iconMap = {
     'clear-day': '☀',
@@ -39,23 +39,23 @@ const weatherBackgroundMap = {
 btnSearch.addEventListener("click", () => {
     if (input.value.trim() !== '') {
         showError.style.display = "none";
-        loadWetherData(input.value, config.grad);
+        loadWeatherData(input.value, config.grad);
     }
 })
 
 input.addEventListener('keydown', event => {
     if ((event.key === 'Enter') && (input.value.trim() !== '')) { 
-        loadWetherData(input.value, config.grad);
+        loadWeatherData(input.value, config.grad);
     } 
 })
 
 btnGradToggler.addEventListener("click", () => {
     btnGradToggler.textContent = (btnGradToggler.textContent === '°F') ? '°C' : '°F';
     config.grad = (config.grad === 'metric') ? 'us' : 'metric';
-    loadWetherData(data.address, config.grad )
+    loadWeatherData(data.address, config.grad )
 })
 
-export function showWetherData(data) {
+export function showWeatherData(data) {
     input.value = '';
     let weatherIcon = data.days[0].conditions;
 
@@ -78,13 +78,13 @@ export function showWetherData(data) {
         const icon = data.days[i].icon;
         const iconSymbol = iconMap[icon] || '❓';
         container.innerHTML += `
-                <div class="test">
-                    <div class="wether-5days-left"> 
+                <div class="weather-5days-day">
+                    <div class="weather-5days-left"> 
                         <div class="ico">${iconSymbol}</div>
                         <div class="day">  ${day} </div>
                         <div class="wetter">${data.days[i].conditions}</div>
                     </div>
-                    <div class="wether-5days-right">
+                    <div class="weather-5days-right">
                         <div class="minmax"> <span>${Math.round(data.days[i].tempmax)}</span>&deg;/ 
                         <span>${Math.round(data.days[i].tempmin)}</span>&deg;</div>
                     </div>
@@ -98,11 +98,11 @@ export function notFound(value) {
 }
 
 export function showCircle() {
-    circles.classList.remove("wether-hidden");
-    weatherBlock.classList.add("wether-hidden");
+    circles.classList.remove("weather-hidden");
+    weatherBlock.classList.add("weather-hidden");
 }
 
 export function hideCircle() { 
-    circles.classList.add("wether-hidden");
-    weatherBlock.classList.remove("wether-hidden");
+    circles.classList.add("weather-hidden");
+    weatherBlock.classList.remove("weather-hidden");
 }

@@ -1,11 +1,11 @@
 'use strict';
-import {showWetherData, showCircle, hideCircle, notFound} from "./draw.js"
+import {showWeatherData, showCircle, hideCircle, notFound} from "./draw.js"
 export let data = ''
 export let config = {
     grad: 'metric'
 };
 
-export async function loadWetherData(city = "Essen" , grad = "metric") {
+export async function loadWeatherData(city = "Essen" , grad = "metric") {
     let url = `https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${city}?unitGroup=${grad}&key=4EWEFLFY2S48BTA5NH8HK4VMF&contentType=json`; // ЭТО ПЕРВЫЙ КЛЮЧА
 
     try {
@@ -16,7 +16,7 @@ export async function loadWetherData(city = "Essen" , grad = "metric") {
             showCircle();
             setTimeout(() => {
                 hideCircle();
-                showWetherData(data);
+                showWeatherData(data);
             }, 2000);
     } catch (error) {
         console.error('Error:', error.message);
@@ -24,4 +24,4 @@ export async function loadWetherData(city = "Essen" , grad = "metric") {
     }
 }
 
-loadWetherData();
+loadWeatherData();
