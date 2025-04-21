@@ -20,23 +20,22 @@ Users can search for a city, view the current weather, see a 5-day forecast, swi
 - Git / GitHub / GitHub Pages
 
 ✨ Features
-Real-time weather display using Visual Crossing API
-
-5-day forecast panel
-Temperature toggle (°C ⇄ °F)
-Animated loading spinner during data fetch
-Responsive layout for all screen sizes
-Weather-based dynamic icons and background images
-Error message on invalid location input
+- Real-time weather display using Visual Crossing API
+- 5-day forecast panel
+- Temperature toggle (°C ⇄ °F)
+- Animated loading spinner during data fetch
+- Responsive layout for all screen sizes
+- Weather-based dynamic icons and background images
+- Error message on invalid location input
 
 📚 Project Assignment (The Odin Project)
-Set up basic HTML, link JS and CSS
-Create functions to fetch and parse API data
-Add user input (form) for city name
-Display parsed weather data dynamically
-Style the app and add loading animation
-Use Webpack for bundling and asset management
-Deploy using GitHub Pages
+- Set up basic HTML, link JS and CSS
+- Create functions to fetch and parse API data
+- Add user input (form) for city name
+- Display parsed weather data dynamically
+- Style the app and add loading animation
+- Use Webpack for bundling and asset management
+- Deploy using GitHub Pages
 
 ## 🌐 Data Source
 
