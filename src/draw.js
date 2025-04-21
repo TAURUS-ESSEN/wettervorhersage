@@ -1,6 +1,18 @@
 'use strict';
 import {config, data, loadWeatherData} from "./index.js"
 
+import clearIcon from './img/clear-icon.png';
+import cloudyIcon from './img/cloudy-icon.png';
+import overcastIcon from './img/overcast-icon.png';
+import rainIcon from './img/rain-icon.png';
+import snowIcon from './img/snow-icon.png';
+
+import clearBg from './img/clear-bg.jpg';
+import cloudyBg from './img/cloudy-bg.jpg';
+import overcastBg from './img/overcast-bg.jpg';
+import rainBg from './img/rain-bg.jpg';
+import snowBg from './img/snow-bg.jpg';
+
 const btnSearch = document.getElementById("search");
 const btnGradToggler = document.getElementById("gradToggler");
 const input = document.querySelector("input");
@@ -21,20 +33,20 @@ const iconMap = {
 };
 
 const weatherMap = {
-    'Clear': 'clear-icon.png',
-    'Partially cloudy': 'cloudy-icon.png',
-    'Overcast': 'overcast-icon.png',
-    'Rain': 'rain-icon.png',
-    'Snow': 'snow-icon.png'
-};
-
-const weatherBackgroundMap = {
-    'Clear': 'clear-bg.jpg',
-    'Partially cloudy': 'cloudy-bg.jpg',
-    'Overcast': 'overcast-bg.jpg',
-    'Rain': 'rain-bg.jpg',
-    'Snow': 'snow-bg.jpg'
-};
+    'Clear': clearIcon,
+    'Partially cloudy': cloudyIcon,
+    'Overcast': overcastIcon,
+    'Rain': rainIcon,
+    'Snow': snowIcon,
+  };
+  
+  const weatherBackgroundMap = {
+    'Clear': clearBg,
+    'Partially cloudy': cloudyBg,
+    'Overcast': overcastBg,
+    'Rain': rainBg,
+    'Snow': snowBg,
+  };
 
 btnSearch.addEventListener("click", () => {
     if (input.value.trim() !== '') {
@@ -65,10 +77,10 @@ export function showWeatherData(data) {
     }  
     const weatherBg = weatherBackgroundMap[weatherIcon] || 'clear-bg.jpg';
     
-    document.body.style.backgroundImage = `url('./img/${weatherBg}')`;
+    document.body.style.backgroundImage = `url('${weatherBg}')`;
     const weatherSymbol = weatherMap[weatherIcon] || 'clear-icon.png';
     document.getElementById("location").textContent = data.resolvedAddress;
-    document.getElementById("weather-icon").src = `./img/${weatherSymbol}`;
+    document.getElementById("weather-icon").src = `${weatherSymbol}`;
     document.getElementById("temp").textContent = Math.round(data.days[0].temp);
     document.getElementById("temp-min").textContent = Math.round(data.days[0].tempmin);
     document.getElementById("temp-max").textContent = Math.round(data.days[0].tempmax);

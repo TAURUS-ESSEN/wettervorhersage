@@ -23,7 +23,7 @@ html {
 }
 
 body {
-    background-image: url('./img/clear-bg.jpg');
+    background-image: url('../img/clear-bg.jpg');
     background-repeat: no-repeat;
     background-size: cover;
 }
